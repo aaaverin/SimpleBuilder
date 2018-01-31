@@ -30,12 +30,15 @@ public class BuildingGrid : MonoBehaviour
 		int busy = 0;
 		Vector2 step = new Vector2(GameConstants.GridSize.x / GameConstants.RowCount, 
 			GameConstants.GridSize.y / GameConstants.ColumnCount );
+		Vector2 offset = new Vector2( -GameConstants.GridSize.x / 2 + GameConstants.CellSize.x / 2, 
+			-GameConstants.GridSize.y / 2 + GameConstants.CellSize.y / 2);
 		for (int index = 0; index < cellCount; index++)
 		{
 			var cell = Instantiate(cellPrefab);
-			var z = index % GameConstants.RowCount * step.x + GameConstants.CellSize.x - GameConstants.GridSize.x / 2;
-			var x = index / GameConstants.RowCount * step.y + GameConstants.CellSize.y - GameConstants.GridSize.y / 2;
+			var z = index % GameConstants.RowCount * step.x + offset.x;
+			var x = index / GameConstants.RowCount * step.y + offset.y;
 			cell.transform.localPosition = new Vector3(x, GameConstants.Y, z);
+			cell.transform.SetParent(this.transform, true);
 			var remainBusy = startBusy - busy;
 			var remainCells = cellCount - index;
 			//set seed
