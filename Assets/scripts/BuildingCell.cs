@@ -14,4 +14,5 @@ public class BuildingCell : MonoBehaviour
     }
 
     public bool Busy { get; set; }
+    public int Index { get; set; }
 }

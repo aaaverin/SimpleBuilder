@@ -8,7 +8,7 @@ public class InputManager : MonoBehaviour, IManager
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Retranslator.Send("BreakBuild");
+            Retranslator.Send(GameEvents.BreakBuild);
         }
     }
 }
