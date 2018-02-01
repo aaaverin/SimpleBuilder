@@ -14,14 +14,14 @@ public class Retranslator : MonoBehaviour
         instance = this;
     }
 
-    public static void Send(string message)
+    public static void Send(string message, object value = null)
     {
         if (instance == null)
             return;
         
         foreach (var manager in instance.managers)
         {
-            manager.SendMessage(message);
+            manager.SendMessage(message, value, SendMessageOptions.DontRequireReceiver);
         }
     }
 }
